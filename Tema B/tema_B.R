@@ -122,6 +122,7 @@ f = function(N, a, b){
 }
 cat("Estimare integrala: ", f(20000, 0), "\n")
 cat("Eroare absoluta: ", abs(f(10000, 0)-1/2), "\n")
+
 # B4) (a) #######################################
 
 n = 10000
