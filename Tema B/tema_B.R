@@ -74,9 +74,19 @@ cat("Eroarea relativa:", relative_error, "\n")
 
 # B3) (a) #######################################
 
-f = function(x) {
-  return ((2*x - 1) / (x^2 - x - 6))
+f = function(N,a,b){
+  sum = 0
+  for(i in 1:N){
+    x = runif(1,a,b)
+    sum = sum + ((2*x-1)/(x^2-x-6))
+  }
+  return ((b-a)*sum/N)
 }
+estimare = f(10000, -1, 1)
+valoare_exacta = log(3) - log(2)
+eroare = abs (estimare - valoare_exacta)
+cat("Estimare B3_a: ", estimare, "\n")
+cat("Eroare absolută: ", eroare, "\n")
 
 
 
