@@ -83,16 +83,45 @@ f = function(N,a,b){
   return ((b-a)*sum/N)
 }
 estimare = f(10000, -1, 1)
-valoare_exacta = log(3) - log(2)
-eroare = abs (estimare - valoare_exacta)
-cat("Estimare B3_a: ", estimare, "\n")
-cat("Eroare absolută: ", eroare, "\n")
+val_exacta = log(3) - log(2)
+eroare = abs (estimare - val_exacta)
+cat("Estimare integrala: ", estimare, "\n")
+cat("Eroare absoluta: ", eroare, "\n")
 
+# B3) (b) #######################################
 
+f = function(N, a, b) {
+  sum = 0
+  samp = 0
+  for (i in 1:N) {
+    x = runif(1, a, b) 
+    if (3*x - 3 > 0){
+      sum = sum + ((x + 4) / sqrt(3*x - 3))
+      samp = samp + 1
+    }
+  }
+  estimate = sum / samp
+  return (estimate)
+}
+estimare = f(20000, 3, 11)
+val_exacta = 61.2
+eroare = abs(estimare - val_exacta)
 
+cat("Estimare integrala: ", estimare, "\n")
+cat("Eroare absoluta: ", eroare, "\n")
 
+# B3) (c) #######################################
 
-
+f = function(N, a, b){
+  sum = 0
+  for(i in 1:N){
+    x = rgamma(1, 1)
+    sum = sum + x * exp(-x^2)
+  }
+  return (sum/N)
+}
+cat("Estimare integrala: ", f(20000, 0), "\n")
+cat("Eroare absoluta: ", abs(f(10000, 0)-1/2), "\n")
 # B4) (a) #######################################
 
 n = 10000
